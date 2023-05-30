@@ -2,7 +2,7 @@ package com.example.tapaz.manager;
 
 import com.example.tapaz.dto.CarDto;
 import com.example.tapaz.entity.Car;
-import com.example.tapaz.exception.NotFoundExceptionn;
+import com.example.tapaz.exception.NotFoundException;
 import com.example.tapaz.mapper.CarMapper;
 import com.example.tapaz.pagenation.CarPageResponse;
 import com.example.tapaz.repository.CarRepository;
@@ -12,7 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @AllArgsConstructor
 @Service
 public class CarManager implements CarService {
@@ -31,7 +30,7 @@ public class CarManager implements CarService {
     @Override
     public CarDto getById(int id) {
         return carRepository.findById(id).stream().map(carMapper::toCarDto).findFirst()
-                .orElseThrow(()->new NotFoundExceptionn("bu melumata uygun netice tapilmadi"));
+                .orElseThrow(()->new NotFoundException("bu melumata uygun netice tapilmadi"));
     }
 
     @Override

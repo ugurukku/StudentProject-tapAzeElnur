@@ -1,10 +1,8 @@
 package com.example.tapaz.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Data
@@ -12,10 +10,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 @NoArgsConstructor
 @Builder
 @Entity(name="Istifadeciler")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
 
     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     @Column(name="ad")
     String name;
@@ -23,6 +22,13 @@ public class User {
     Integer age;
     @Column(name="email unvani")
     String mail;
+
+    String password;
+
+    Boolean isActive;
+
+    @Enumerated(EnumType.STRING)
+    Role role;
 
 
 }

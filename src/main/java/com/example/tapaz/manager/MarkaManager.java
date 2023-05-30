@@ -2,7 +2,7 @@ package com.example.tapaz.manager;
 
 import com.example.tapaz.dto.MarkaDto;
 import com.example.tapaz.entity.Marka;
-import com.example.tapaz.exception.NotFoundExceptionn;
+import com.example.tapaz.exception.NotFoundException;
 import com.example.tapaz.mapper.MarkaMapper;
 import com.example.tapaz.pagenation.MarkaPageResponse;
 import com.example.tapaz.repository.MarkaRepository;
@@ -12,7 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Service
 @AllArgsConstructor
 public class MarkaManager implements MarkaService {
@@ -31,7 +30,7 @@ public class MarkaManager implements MarkaService {
     @Override
     public MarkaDto getById(int id) {
         return markaRepository.findById(id).stream().map(markaMapper::toMarkaDto).
-                findFirst().orElseThrow(()->new  NotFoundExceptionn("bu emeliyyata uygun netice tapilmadi"));
+                findFirst().orElseThrow(()->new NotFoundException("bu emeliyyata uygun netice tapilmadi"));
     }
 
     @Override

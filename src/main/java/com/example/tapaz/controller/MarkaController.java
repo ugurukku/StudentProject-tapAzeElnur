@@ -6,6 +6,7 @@ import com.example.tapaz.pagenation.MarkaPageResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,7 +27,10 @@ public class MarkaController {
     public MarkaDto getById(@PathVariable int id){
         return markaManager.getById(id);
     }
+
+
     @PostMapping("/post/")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void saveMarka(@RequestBody @Valid Marka marka){
         markaManager.saveMarka(new MarkaDto(marka.getName()));
     }

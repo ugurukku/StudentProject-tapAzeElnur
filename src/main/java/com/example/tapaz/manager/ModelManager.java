@@ -2,7 +2,7 @@ package com.example.tapaz.manager;
 
 import com.example.tapaz.dto.ModelDto;
 import com.example.tapaz.entity.Model;
-import com.example.tapaz.exception.NotFoundExceptionn;
+import com.example.tapaz.exception.NotFoundException;
 import com.example.tapaz.mapper.ModelMapper;
 import com.example.tapaz.pagenation.ModelPageResponse;
 import com.example.tapaz.repository.ModelRepository;
@@ -12,7 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @AllArgsConstructor
 @Service
 public class ModelManager implements ModelService {
@@ -32,7 +31,7 @@ public class ModelManager implements ModelService {
     public ModelDto getById(int id) {
 
         return modelRepository.findById(id).stream().map(modelMapper::toModelDto).findFirst().
-                orElseThrow(()->new NotFoundExceptionn("daxil etdiyiniz melumata uygun istifadeci tapilmadi"));
+                orElseThrow(()->new NotFoundException("daxil etdiyiniz melumata uygun istifadeci tapilmadi"));
     }
 
     @Override
