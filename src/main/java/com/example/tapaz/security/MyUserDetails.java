@@ -58,4 +58,14 @@ public class MyUserDetails implements UserDetails {
     public boolean isEnabled() {
         return isActive;
     }
+
+    @Override
+    public String toString() {
+        return "MyUserDetails{" +
+                "mail='" + mail + '\'' +
+                ", password='" + password + '\'' +
+                ", isActive=" + isActive +
+                ", role=" + role +
+                '}';
+    }
 }

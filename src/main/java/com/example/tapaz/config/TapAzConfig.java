@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class TapAzConfig {
     @Bean
-public OpenAPI openAPI(){
-    return new OpenAPI().info(new Info().title("TapAz.avtomobil")
-            .version("0.1")
-            .description("Avtomobil Elanlari")
-            .contact(new Contact().url("/api/").email("elnurmirzyev96@gmail.com").name("Elnur Mirzeyev")));
-}
+    public OpenAPI openAPI() {
+        return new OpenAPI().info(new Info().title("TapAz.avtomobil")
+                .version("0.1")
+                .description("Avtomobil Elanlari")
+                .contact(new Contact().url("/api/").email("elnurmirzyev96@gmail.com").name("Elnur Mirzeyev")));
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.tapaz.controller;
 
+import com.example.tapaz.dto.LoginResponse;
 import com.example.tapaz.dto.RegisterRequest;
 import com.example.tapaz.dto.UserDto;
 import com.example.tapaz.entity.User;
@@ -45,5 +46,11 @@ public class UserController {
     public ResponseEntity<Void> register(@RequestBody RegisterRequest registerRequest){
         userManager.register(registerRequest);
         return ResponseEntity.created(URI.create("/api/users")).build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody RegisterRequest registerRequest){
+        LoginResponse loginResponse = userManager.login(registerRequest);
+        return ResponseEntity.ok(loginResponse);
     }
 }
